@@ -1,0 +1,64 @@
+.main-container{
+  vertical-align: center;
+  width: 80%;
+  height: 80vh;
+  background-color: rgb(187, 187, 187);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 auto;
+  
+}
+
+.containers{
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.ban-attributes-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
+  height: 75vh;
+  background-color: rgb(122, 122, 122);
+}
+
+.image-container, .ban-attributes-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.image-container{
+  width: 500px;
+  height: 85%;
+  background-color:  rgb(122, 122, 122);
+}
+
+.image-dog{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.button-api-call, .attr-item, .attribute-button{
+  padding: 0.4rem 0.8rem;
+  border-style: none;
+  border-radius: 10px;
+  font-style: bold;
+}
+
+.attribute-button{
+  background-color: white;
+}
+
+.button-api-call{
+  font-size: 1rem;
+}
+
+.attributes-container{
+  display: flex;
+  gap: 1rem;
+}
