@@ -14,7 +14,7 @@ function App() {
     {
       console.log(data);
 
-      if (!banAttrs.includes(data[0]["breeds"][0]["bred_for"]) && !banAttrs.includes(data[0]["breeds"][0]["breed_group"]) && !banAttrs.includes(data[0]["breeds"][0]["life_span"])){
+      if (!banAttrs.includes(data[0]["breeds"][0]["bred_for"]) && !banAttrs.includes(data[0]["breeds"][0]["temperament"]) && !banAttrs.includes(data[0]["breeds"][0]["life_span"])){
         setValues(data[0]); 
         look = false;
       } else{
@@ -42,6 +42,11 @@ function App() {
     }
     
   }
+
+  function removeAttribute(attr){
+    let arrayWithoutAttribute = banAttrs.filter((item) => item != attr);
+    setBanAttrs(arrayWithoutAttribute);
+  }
   let content;
   
     if (values && values["breeds"] && values["breeds"].length > 0 && showImage){
@@ -50,14 +55,14 @@ function App() {
         <img className="image-dog" src={values["url"]} width={values["width"]} height={values["height"]} /> 
         <div className="attributes-container">
           <button onClick={() => addAttribute(breeds["bred_for"])} className="attribute-button">{breeds["bred_for"]}</button>
-          <button onClick={() => addAttribute(breeds["breed_group"])} className="attribute-button">{breeds["breed_group"]}</button>
+          <button onClick={() => addAttribute(breeds["temperament"])} className="attribute-button">{breeds["temperament"]}</button>
           <button onClick={() => addAttribute(breeds["life_span"])} className="attribute-button">{breeds["life_span"]}</button>
         </div>
         </Fragment>);
     } 
     let attributes;
     if (banAttrs){
-      attributes = Array.isArray(banAttrs) ? banAttrs.map((attr, key) => <button id={key} className="attr-item">{attr}</button>) : <span></span>
+      attributes = Array.isArray(banAttrs) ? banAttrs.map((attr, key) => <button onClick={() => removeAttribute(attr)} id={key} className="attr-item">{attr}</button>) : <span></span>
     }
   
   return (
@@ -67,6 +72,7 @@ function App() {
             {content}
           </div>
           <div className="ban-attributes-container">
+            <h2>Banned Attributes</h2>
             {attributes}
           </div>
         </div>
